@@ -44,6 +44,10 @@ public class SelectedFoodActivity extends AppCompatActivity {
             share.putExtra(Intent.EXTRA_STREAM, txtReceipt.getText().toString());
             startActivity(Intent.createChooser(share, "Share via:"));
         });
+
+        btnOk.setOnClickListener(view -> {
+            finish();
+        });
     }
 
     public void setFoodInformation(String food) {

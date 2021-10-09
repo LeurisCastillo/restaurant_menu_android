@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 public class FoodListActivity extends AppCompatActivity {
 
     TextView txtFoodLabel;
@@ -36,6 +38,7 @@ public class FoodListActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String category = intent.getStringExtra("Food category");
 
+        setCategoryImageInformation(category);
         showFoodsForCategory(category);
 
         lstFood.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -52,31 +55,26 @@ public class FoodListActivity extends AppCompatActivity {
 
             case "Breakfast":
                 txtFoodLabel.append(" for breakfast");
-                imgFoodCategory.setImageResource(R.drawable.ic_launcher_background);
                 setLstFoods(breakfastFoods);
                 break;
 
             case "Meal":
                 txtFoodLabel.append(" for meal");
-                imgFoodCategory.setImageResource(R.drawable.ic_launcher_background);
                 setLstFoods(mealFoods);
                 break;
 
             case "Afternoon snack":
                 txtFoodLabel.append(" for afternoon snack");
-                imgFoodCategory.setImageResource(R.drawable.ic_launcher_background);
                 setLstFoods(afternoonSnackFoods);
                 break;
 
             case "Dinner":
                 txtFoodLabel.append(" for dinner");
-                imgFoodCategory.setImageResource(R.drawable.ic_launcher_background);
                 setLstFoods(dinnerFoods);
                 break;
 
             case "Dessert":
                 txtFoodLabel.append(" for dessert");
-                imgFoodCategory.setImageResource(R.drawable.ic_launcher_background);
                 setLstFoods(dessertFoods);
                 break;
 
@@ -92,5 +90,12 @@ public class FoodListActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SelectedFoodActivity.class);
         intent.putExtra("Selected food", selectedFood);
         startActivity(intent);
+    }
+
+    public void setCategoryImageInformation(String category) {
+
+        String formatFoodName = category.replaceAll(" ", "_").toLowerCase(Locale.ROOT);
+        int drawableImageId = getResources().getIdentifier(formatFoodName, "drawable", getPackageName());
+        imgFoodCategory.setImageResource(drawableImageId);
     }
 }

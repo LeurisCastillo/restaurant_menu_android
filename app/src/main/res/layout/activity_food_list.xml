@@ -14,14 +14,15 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:text="@string/lst_food_label"
-        android:textSize="15sp"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
 
     <ImageView
         android:id="@+id/img_food_category"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="230dp"
+        android:scaleType="centerCrop"
         android:layout_below="@id/txt_lst_food_label"/>
 
     <ListView
